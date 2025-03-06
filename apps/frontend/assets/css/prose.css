@@ -1,0 +1,12 @@
+.prose {
+  h3,
+  h4,
+  h5,
+  p,
+  ul,
+  ol {
+    &:not(:first-child) {
+      margin-top: 0.5rem;
+    }
+  }
+}

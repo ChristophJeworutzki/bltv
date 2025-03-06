@@ -1,0 +1,14 @@
+{
+  "name": "bltv",
+  "version": "1.0.0",
+  "author": "Christoph Jeworutzki",
+  "private": true,
+  "scripts": {
+    "build": "cd ./apps/frontend && pnpm build",
+    "dev": "cd ./apps/frontend && pnpm dev",
+    "update:deps": "pnpm dlx taze -r -w",
+    "update:deps:major": "pnpm dlx taze major -r -w",
+    "tunnel:start": "ngrok start --config ./ngrok.yml --all"
+  },
+  "packageManager": "pnpm@9.15.6"
+}

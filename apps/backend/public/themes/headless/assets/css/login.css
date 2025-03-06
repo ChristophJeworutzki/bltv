@@ -1,0 +1,124 @@
+:root {
+  --logo: url("/themes/headless/assets/images/logo.svg");
+}
+
+body.login {
+  background-color: #101010;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#login {
+  padding: 0;
+  margin: 0;
+}
+
+#wp-auth-check-wrap #wp-auth-check {
+  background: #101010;
+}
+
+#loginform {
+  border-radius: 8px;
+  border: 0;
+  box-shadow: 0 0 2rem 0 rgba(30, 30, 30, 0.15);
+}
+
+.login .wp-login-logo a {
+  outline: none;
+  background-image: none, var(--logo, 'url("/admin/wp-admin/images/wordpress-logo-white.svg")');
+  pointer-events: none;
+  width: 200px;
+  height: 100px;
+  background-size: contain;
+  background-position: center;
+}
+
+.wp-core-ui .button-primary {
+  cursor: pointer;
+  background: #101010;
+  border-color: #101010;
+  box-shadow: 0 1px 0 #101010;
+  color: #ffffff;
+  text-decoration: none;
+  text-shadow:
+    0 -1px 1px #101010,
+    1px 0 1px #101010,
+    0 1px 1px #101010,
+    -1px 0 1px #101010;
+}
+
+.wp-core-ui .button-primary:hover,
+.wp-core-ui .button-primary:focus,
+.wp-core-ui .button-primary:active {
+  background: #101010;
+  border-color: #101010;
+  box-shadow: 0 1px 0 #101010;
+  color: #ffffff;
+  text-decoration: none;
+  text-shadow:
+    0 -1px 1px #101010,
+    1px 0 1px #101010,
+    0 1px 1px #101010,
+    -1px 0 1px #101010;
+}
+
+.wp-core-ui .button-secondary {
+  color: #101010;
+}
+
+.login #login_error,
+.login .message {
+  border-left: 4px solid #cecece !important;
+}
+
+.login #backtoblog a:hover,
+.login #nav a:hover {
+  color: #ffffff !important;
+}
+
+#backtoblog {
+  display: none !important;
+}
+
+.login #nav a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #ffffff;
+  opacity: 0.6;
+}
+
+.login #nav a:hover {
+  opacity: 0.6;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="color"]:focus,
+input[type="date"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="email"]:focus,
+input[type="month"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+input[type="week"]:focus,
+input[type="checkbox"]:focus,
+input[type="radio"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #101010;
+  box-shadow: 0 0 0 1px #101010;
+  outline: 2px solid transparent;
+}
+
+.privacy-policy-page-link {
+  display: none;
+}
+
+.language-switcher {
+  display: none;
+}

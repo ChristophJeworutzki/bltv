@@ -1,0 +1,14 @@
+.htaccess
+/vendor
+/public/admin
+/public/languages
+/public/upgrade
+/public/uploads
+/public/plugins/*
+/public/mu-plugins/*
+/public/advanced-cache.php
+/public/mcloud-view-cache
+/public/mcloud-reports
+/public/bfu-temp/
+
+!/public/*/api-slug.php

@@ -1,0 +1,67 @@
+import plugin from "tailwindcss/plugin";
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
+  theme: {
+    container: {
+      center: true,
+      padding: "0.5rem",
+      screens: false,
+    },
+    colors: {
+      transparent: "transparent",
+      current: "currentColor",
+      black: "#000000",
+      white: "#FFFFFF",
+    },
+    fontFamily: {
+      monospace: ["Aeonik Mono", "monospace"],
+      serif: ["Denton Text Cond", "serif"],
+    },
+  },
+  plugins: [
+    plugin(function ({ addBase, addComponents, addUtilities, theme }) {
+      addBase({
+        "*": {
+          "@apply antialiased": "",
+        },
+        body: {
+          backgroundColor: theme("colors.black"),
+          color: theme("colors.white"),
+          fontFamily: theme("fontFamily.monospace"),
+          fontSize: "0.75rem",
+          textTransform: "uppercase",
+        },
+      });
+      addUtilities({
+        ".no-scrollbar": {
+          scrollbarWidth: "none",
+          "-ms-overflow-style": "none",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        },
+        ".clip-inset": {
+          "clip-path": "inset(0)",
+        },
+      });
+      addComponents({
+        ".type-display": {
+          fontFamily: theme("fontFamily.serif"),
+          fontSize: "clamp(2rem, 4vw, 4rem)",
+          lineHeight: "1.1",
+          textTransform: "none",
+        },
+        ".type-headline": {
+          fontFamily: theme("fontFamily.serif"),
+          fontSize: "2rem",
+          lineHeight: "1.1",
+          textTransform: "none",
+        },
+      });
+    }),
+  ],
+};
