@@ -10,7 +10,7 @@
         class="absolute left-0 top-0 flex h-dvh w-full items-center justify-center"
       >
         <div
-          class="text-gradient type-display flex select-none flex-col items-center justify-center whitespace-nowrap"
+          class="type-display flex select-none flex-col items-center justify-center whitespace-nowrap"
         >
           <span>Es werde Licht.</span>
           <span>Que la lumière soit.</span>
@@ -19,6 +19,7 @@
           <span>Laat daar Lig wees.</span>
         </div>
       </div>
+      <base-gradient-background />
     </div>
   </transition>
 </template>
@@ -71,51 +72,6 @@ watch(isSwiping, (value) => {
 </script>
 
 <style lang="postcss">
-.text-gradient {
-  background-image: linear-gradient(
-    120deg,
-    #ffccd5,
-    #ff8a8a,
-    #ffb56b,
-    #ffed8f,
-    #9dff9d,
-    #8ccdff,
-    #b39dff,
-    #e29fff
-  );
-  background-size: 400% 400%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation:
-    hue 4s infinite linear,
-    brightness 8s infinite alternate;
-}
-
-@keyframes hue {
-  0% {
-    background-position: 0% 50%;
-    filter: hue-rotate(0deg);
-  }
-  50% {
-    background-position: 100% 50%;
-    filter: hue-rotate(180deg);
-  }
-  100% {
-    background-position: 0% 50%;
-    filter: hue-rotate(360deg);
-  }
-}
-
-@keyframes brightness {
-  0% {
-    filter: brightness(1) contrast(1);
-  }
-  100% {
-    filter: brightness(1.2) contrast(1.2);
-  }
-}
-
 .intro-leave-active {
   animation: intro-out 0.6s cubic-bezier(0.65, 0, 0.35, 1);
 }
