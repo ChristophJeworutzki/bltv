@@ -53,12 +53,21 @@ export default {
           fontFamily: theme("fontFamily.serif"),
           fontSize: "clamp(2rem, 4vw, 4rem)",
           lineHeight: "1.1",
+          letterSpacing: "-0.0125em",
           textTransform: "none",
         },
         ".type-headline": {
           fontFamily: theme("fontFamily.serif"),
           fontSize: "2rem",
           lineHeight: "1.1",
+          letterSpacing: "-0.0125em",
+          textTransform: "none",
+        },
+        ".type-headline-sm": {
+          fontFamily: theme("fontFamily.serif"),
+          fontSize: "1.5rem",
+          lineHeight: "1.1",
+          letterSpacing: "-0.0125em",
           textTransform: "none",
         },
       });

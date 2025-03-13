@@ -19,6 +19,7 @@ function rest_get_index_page(WP_REST_Request $request) {
         'id'        => $post->ID,
         'title'     => $post->post_title,
         'slug'      => $post->post_name,
+        'fields'    => get_fields($post->ID),
     ];
 }
 

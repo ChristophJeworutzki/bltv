@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="mb-[env(safe-area-inset-bottom)] flex w-full flex-col gap-4 p-2 lg:p-2"
+    class="mb-[env(safe-area-inset-bottom)] mt-32 flex w-full flex-col gap-4 p-2 lg:p-2"
   >
     <div class="w-full py-2 text-white/10">
       <logo class="h-auto w-full" />

@@ -40,20 +40,10 @@
         ]"
       />
     </transition>
-    <button
-      v-if="autoplay !== 'hover' && !muted"
-      class="absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 text-white text-opacity-80 group-hover:block"
-      @click="toggleMute"
-    >
-      <icon-volume-off v-if="state.muted" class="h-8 w-8" />
-      <icon-volume-on v-else class="h-8 w-8" />
-    </button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import IconVolumeOn from "@/assets/svg/icons/volume-on.svg";
-import IconVolumeOff from "@/assets/svg/icons/volume-off.svg";
 import { useIntersectionObserver, useIdle } from "@vueuse/core";
 
 type Props = {

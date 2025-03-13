@@ -1,5 +1,4 @@
 <template>
-  <nuxt-loading-indicator color="currentColor" />
   <nuxt-layout>
     <nuxt-page />
   </nuxt-layout>

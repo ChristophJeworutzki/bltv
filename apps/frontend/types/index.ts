@@ -1,4 +1,11 @@
 declare global {
+  interface Rect {
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+  }
+
   interface Attachment {
     id: string;
     title: string;
@@ -81,7 +88,7 @@ declare global {
   interface Project extends Post {
     customTalentName?: string;
     client?: string;
-    preview?: Media;
+    preview?: Media[];
     content?: {
       layout: "video" | "gallery";
       gallery?: Media[];
@@ -95,7 +102,13 @@ declare global {
     };
   }
 
-  interface Page extends Post {}
+  interface ProjectCollection {
+    data: Project[];
+  }
+
+  interface Page extends Post {
+    fields: Record<string, any>;
+  }
 
   interface GlobalData {
     profile: {

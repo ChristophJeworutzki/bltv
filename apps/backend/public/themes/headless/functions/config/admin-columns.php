@@ -11,8 +11,7 @@ function project_custom_columns($columns) {
   unset($columns['comments']);
   unset($columns['date']);
   $columns['thumbnail'] =  '';
-  $columns['client'] =  'Client';
-  $order = array('thumbnail', 'title', 'client', 'talent');
+  $order = array('thumbnail', 'title');
   uksort($columns, function ($key1, $key2) use ($order) {
     return (array_search($key1, $order) > array_search($key2, $order));
   });
@@ -22,7 +21,8 @@ function project_custom_columns($columns) {
 function project_custom_column_values($column, $post_id) {
   switch ($column) {
     case 'thumbnail':
-      $media = get_field('preview', $post_id);
+      $preview = get_field('preview', $post_id);
+      $media = $preview[0] ?? null;
       if ($media && $media['type'] === 'image' && isset($media['image']['id'])) {
         $thumbnail = wp_get_attachment_image_url($media['image']['id'], 'thumbnail');
       } else if ($media && $media['type'] === 'video' && isset($media['video']['id'])) {
@@ -32,10 +32,6 @@ function project_custom_column_values($column, $post_id) {
       if (isset($thumbnail) && !empty($thumbnail)) $div .= '<img src="' . $thumbnail . '" />';
       $div .= '</div>';
       echo $div;
-      break;
-    case 'client':
-      $client = get_field('client', $post_id);
-      echo $client;
       break;
   }
 }

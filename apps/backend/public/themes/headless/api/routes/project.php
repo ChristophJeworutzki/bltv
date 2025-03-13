@@ -10,7 +10,7 @@ function rest_get_projects(WP_REST_Request $request) {
         'post_type' => 'project',
         'post_status' => 'publish',
         'posts_per_page' => -1,
-        'orderby' => 'title',
+        'orderby' => 'menu_order',
         'order' => 'ASC'
     ]);
 

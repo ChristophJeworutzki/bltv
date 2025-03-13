@@ -16,7 +16,6 @@ class ProjectTransformer extends Fractal\TransformerAbstract {
             'title'                 => $post->post_title,
             'slug'                  => $post->post_name,
             'type'                  => $post->post_type,
-            'client'                => get_field('client', $post->ID),
         ];
     }
 

@@ -29,6 +29,7 @@ import {
   useScroll,
   useWindowSize,
 } from "@vueuse/core";
+
 const { isOpen, project } = storeToRefs(useProjectStore());
 
 const router = useRouter();

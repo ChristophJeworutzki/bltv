@@ -1,7 +1,7 @@
 <template>
   <main class="flex h-dvh w-full items-center justify-center text-center">
     <div v-if="error" class="flex flex-col gap-1">
-      <span>{{ error.statusCode }}</span>
+      <span class="type-headline-sm">{{ error.statusCode }}</span>
       <template v-if="error.statusCode === 404">
         <span>Page Not Found</span>
       </template>

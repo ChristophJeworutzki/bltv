@@ -12,63 +12,28 @@
         <li>
           <nuxt-link
             to="/"
-            class="type-headline leading-none hover:italic"
+            class="menu-item"
             :class="{ active: route.path.includes('/projects') }"
           >
             Projects
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link
-            to="/about"
-            class="type-headline leading-none hover:italic"
-          >
-            About
-          </nuxt-link>
+          <nuxt-link to="/about" class="menu-item">About</nuxt-link>
         </li>
         <li>
-          <nuxt-link
-            to="/events"
-            class="type-headline leading-none hover:italic"
-          >
-            Events
-          </nuxt-link>
+          <nuxt-link to="/events" class="menu-item">Events</nuxt-link>
         </li>
         <li>
-          <nuxt-link
-            to="/contact"
-            class="type-headline leading-none hover:italic"
-          >
-            Contact
-          </nuxt-link>
+          <nuxt-link to="/contact" class="menu-item">Contact</nuxt-link>
         </li>
       </ul>
     </nav>
-    <div class="absolute right-0 top-0 hidden p-2 lg:block">
-      <div class="flex min-w-[22.5rem] flex-col items-center border-b">
-        <div class="w-full border-t p-2 text-center leading-none">
-          {{ globalData?.profile?.company }}
-        </div>
-        <div class="w-full border-t p-2 text-center leading-none">
-          {{ globalData?.profile?.address }}
-        </div>
-        <div class="w-full border-t p-2 text-center leading-none">
-          {{ globalData?.profile?.zip }} {{ globalData?.profile?.city }},
-          {{ globalData?.profile?.country }}
-        </div>
-        <div
-          v-if="globalData?.profile?.instagram"
-          class="w-full border-t p-2 text-center leading-none"
-        >
-          <a
-            :href="globalData.profile.instagram"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Follow us on instagram
-          </a>
-        </div>
-      </div>
+    <div
+      class="absolute right-0 top-0 hidden p-2 lg:block"
+      v-if="!route.fullPath.includes('/contact')"
+    >
+      <app-contact />
     </div>
   </header>
 </template>
@@ -79,7 +44,6 @@ import IconX from "~/assets/svg/icons/x.svg";
 
 const route = useRoute();
 const { menuOpen } = storeToRefs(useAppStore());
-const { globalData } = storeToRefs(useDataStore());
 
 function toggleMenu() {
   menuOpen.value = !menuOpen.value;

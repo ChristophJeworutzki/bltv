@@ -8,22 +8,23 @@
         <div class="flex h-full w-full grow flex-col justify-between pt-20">
           <nav class="flex grow flex-col items-center justify-center">
             <ul class="flex w-full flex-col items-center px-4">
-              <li class="type-headline">
+              <li>
                 <nuxt-link
                   to="/projects"
+                  class="menu-item"
                   :class="{ active: route.path.includes('/projects') }"
                 >
                   Projects
                 </nuxt-link>
               </li>
-              <li class="type-headline">
-                <nuxt-link to="/about">About</nuxt-link>
+              <li>
+                <nuxt-link to="/about" class="menu-item">About</nuxt-link>
               </li>
-              <li class="type-headline">
-                <nuxt-link to="/events">Events</nuxt-link>
+              <li>
+                <nuxt-link to="/events" class="menu-item">Events</nuxt-link>
               </li>
-              <li class="type-headline">
-                <nuxt-link to="/events">Contact</nuxt-link>
+              <li>
+                <nuxt-link to="/events" class="menu-item">Contact</nuxt-link>
               </li>
             </ul>
           </nav>

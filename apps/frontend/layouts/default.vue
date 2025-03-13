@@ -1,29 +1,12 @@
 <template>
-  <app-intro @completed="onIntroCompleted" />
-  <div v-show="!introSkipped" class="relative">
-    <app-header
-      :class="{
-        '!absolute': !introCompleted,
-      }"
-    />
-    <app-menu v-if="introCompleted" />
+  <div class="relative">
+    <app-header />
+    <app-menu />
     <nuxt-link to="/">
-      <app-logo
-        :class="{
-          '!absolute': !introCompleted,
-        }"
-      />
+      <app-logo />
     </nuxt-link>
     <slot />
     <app-footer />
     <project-modal />
   </div>
 </template>
-
-<script lang="ts" setup>
-const { introSkipped, introCompleted } = storeToRefs(useAppStore());
-
-function onIntroCompleted() {
-  introCompleted.value = true;
-}
-</script>

@@ -1,9 +1,6 @@
 <template>
-  <main class="flex min-h-dvh items-center justify-center">
-    <h1 class="type-headline">
-      We combine precision and creativity to deliver <br />
-      exceptional light design for event productions.
-    </h1>
+  <main class="min-h-dvh">
+    <project-feed />
   </main>
 </template>
 

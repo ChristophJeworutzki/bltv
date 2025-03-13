@@ -19,7 +19,6 @@
           <span>Laat daar Lig wees.</span>
         </div>
       </div>
-      <base-gradient-background />
     </div>
   </transition>
 </template>
