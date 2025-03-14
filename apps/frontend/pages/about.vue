@@ -26,7 +26,7 @@
     </section>
     <section class="py-8">
       <div class="container">
-        <div class="grid grid-cols-3 gap-x-4 gap-y-8">
+        <div class="grid gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
           <div class="flex flex-col gap-2">
             <h2 class="type-headline">Our Services</h2>
             <div class="flex flex-col border-t">
@@ -127,6 +127,6 @@ const { data: page } = await useApi<Page>(`/api/v1/pages/about`, {
 });
 
 useSeoMeta({
-  title: page.value?.title,
+  title: "About",
 });
 </script>

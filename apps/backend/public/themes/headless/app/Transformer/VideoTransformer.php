@@ -62,6 +62,9 @@ class VideoTransformer extends Fractal\TransformerAbstract {
             'files'         => $files,
             'thumbnail'     => get_the_post_thumbnail_url($attachment['id']),
             'poster'        => "https://image.mux.com/{$playbackId}/thumbnail.jpg?time=0",
+            'meta'          => [
+                'controls'  => get_field('controls', $attachment['id']),
+            ],
         ];
     }
 }

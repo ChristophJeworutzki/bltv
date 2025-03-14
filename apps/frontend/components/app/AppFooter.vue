@@ -2,17 +2,19 @@
   <footer
     class="mb-[env(safe-area-inset-bottom)] mt-32 flex w-full flex-col gap-4 p-2 lg:p-2"
   >
-    <div class="w-full py-2 text-white/10">
-      <logo class="h-auto w-full" />
-    </div>
-    <div
-      class="type-headline flex flex-col items-center justify-center gap-2 whitespace-nowrap leading-none lg:flex-row"
-    >
-      <span>Es werde Licht.</span>
-      <span>Que la lumière soit.</span>
-      <span>Let there be light.</span>
-      <span>光よあれ</span>
-      <span>Laat daar Lig wees.</span>
+    <div class="flex flex-col-reverse gap-4 lg:flex-col">
+      <div class="w-full text-white/10">
+        <logo class="h-auto w-full" />
+      </div>
+      <div
+        class="type-headline flex flex-col items-center justify-center gap-2 whitespace-nowrap leading-none lg:flex-row"
+      >
+        <span>Es werde Licht.</span>
+        <span>Que la lumière soit.</span>
+        <span>Let there be light.</span>
+        <span>光よあれ</span>
+        <span>Laat daar Lig wees.</span>
+      </div>
     </div>
     <div
       class="flex w-full flex-col items-center border-b border-t py-2 text-center lg:flex-row lg:justify-between lg:text-left"

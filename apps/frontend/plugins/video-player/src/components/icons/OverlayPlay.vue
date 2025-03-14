@@ -23,7 +23,7 @@
   width: 100%;
   height: 100%;
   clip-path: url(#overlay-play-icon-clip);
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.33);
   backdrop-filter: blur(2rem);
 }
 </style>

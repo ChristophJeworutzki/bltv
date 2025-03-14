@@ -17,7 +17,7 @@
     <base-video
       v-else-if="media.type === 'video' && media.video"
       :src="computedVideoSrc"
-      :thumbnail-src="media.video.thumbnail"
+      :thumbnail-src="media.video.poster"
       :autoplay="videoAutoplay"
       :muted="videoMuted"
       :fit="fit"

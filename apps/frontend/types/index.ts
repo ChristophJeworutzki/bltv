@@ -45,6 +45,9 @@ declare global {
     };
     thumbnail: string;
     poster: string;
+    meta: {
+      controls: boolean;
+    };
   }
 
   interface Audio extends Attachment {}
@@ -86,20 +89,10 @@ declare global {
   }
 
   interface Project extends Post {
-    customTalentName?: string;
     client?: string;
     preview?: Media[];
-    content?: {
-      layout: "video" | "gallery";
-      gallery?: Media[];
-      type?: "upload" | "embed";
-      video?: Video;
-      embed?: string;
-      description?: string;
-      credits?: {
-        items: Credit[];
-      }[];
-    };
+    gallery?: Media[];
+    credits?: Credit[];
   }
 
   interface ProjectCollection {

@@ -10,18 +10,6 @@
       {{ globalData?.profile?.zip }} {{ globalData?.profile?.city }},
       {{ globalData?.profile?.country }}
     </div>
-    <div
-      v-if="globalData?.profile?.instagram"
-      class="w-full border-t p-2 text-center leading-none"
-    >
-      <a
-        :href="globalData.profile.instagram"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        Follow us on instagram
-      </a>
-    </div>
   </div>
 </template>
 

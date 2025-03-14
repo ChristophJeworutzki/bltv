@@ -148,14 +148,14 @@ const hidden = computed(() => {
 :root {
   --video-player-controls-height: 2.5rem;
   --video-player-controls-padding: 0.25rem;
-  --video-player-controls-bottom: 1rem;
-  --video-player-controls-left: 1rem;
+  --video-player-controls-bottom: 0.5rem;
+  --video-player-controls-left: 0.5rem;
   --video-player-controls-width: calc(
     100% - (var(--video-player-controls-left) * 2)
   );
   --video-player-controls-gap: 1rem;
   --video-player-controls-border-radius: 0.5rem;
-  --video-player-controls-background: rgba(255, 255, 255, 0.075);
+  --video-player-controls-background: rgba(0, 0, 0, 0.16);
   --video-player-controls-backdrop-filter: blur(32px);
   --video-player-controls-color: #fff;
   --video-player-controls-button-width: 2.5rem;

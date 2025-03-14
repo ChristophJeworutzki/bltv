@@ -13,7 +13,9 @@
         v-if="project"
         ref="scrollRef"
         class="project-modal__content absolute left-0 top-0 z-10 h-full w-full overflow-auto pb-[100dvh]"
-      ></div>
+      >
+        <project-content :project="project" @close="close" />
+      </div>
       <div
         class="project-modal__backdrop absolute left-0 top-0 z-0 h-full w-full bg-black bg-opacity-90"
         :style="{ opacity: 1 - scrollOutProgress }"

@@ -93,7 +93,7 @@ onBeforeUnmount(() => {
 :root {
   --video-player-aspect-ratio: auto;
   --video-player-background: transparent;
-  --video-player-height: 100dvh;
+  --video-player-height: 100%;
   --video-player-object-fit: contain;
 }
 

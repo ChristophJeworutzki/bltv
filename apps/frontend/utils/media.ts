@@ -22,10 +22,22 @@ export function getCssMediaAspectRatio(media: Media) {
   }
 }
 
+export function getDecimalAspectRatio(media: Media) {
+  if (media.type === "image" && media.image) {
+    return media.image.width / media.image.height;
+  } else if (media.type === "video" && media.video) {
+    return media.video.width / media.video.height;
+  }
+}
+
 export function convertAspectRatioToCss(aspectRatio: string) {
   if (!aspectRatio && aspectRatio.indexOf(":") === -1) {
     return;
   }
   const ratio = aspectRatio.split(":");
   return `${ratio[0]}/${ratio[1]}`;
+}
+
+export function isVideoWithControls(media: Media) {
+  return media.type === "video" && media.video && media.video.meta?.controls;
 }

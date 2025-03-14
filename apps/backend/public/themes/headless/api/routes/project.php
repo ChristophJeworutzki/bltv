@@ -38,7 +38,8 @@ function rest_get_project_by_slug(WP_REST_Request $request) {
 
     return Fractal::create()
         ->item($post, new ProjectTransformer())
-        ->includeContent()
+        ->includeGallery()
+        ->includeCredits()
         ->serializeWith(new ArraySerializer())
         ->toArray();
 }

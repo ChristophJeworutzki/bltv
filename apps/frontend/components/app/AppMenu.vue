@@ -2,12 +2,12 @@
   <transition name="menu">
     <div
       v-show="menuOpen"
-      class="app-menu fixed left-0 top-0 z-40 h-dvh w-full overflow-auto bg-black text-white sm:hidden"
+      class="app-menu fixed left-0 top-0 z-40 h-dvh w-full overflow-auto bg-white text-black sm:hidden"
     >
       <div class="absolute left-0 top-0 h-dvh w-full">
         <div class="flex h-full w-full grow flex-col justify-between pt-20">
           <nav class="flex grow flex-col items-center justify-center">
-            <ul class="flex w-full flex-col items-center px-4">
+            <ul class="flex w-full flex-col items-center gap-2 px-4">
               <li>
                 <nuxt-link
                   to="/projects"

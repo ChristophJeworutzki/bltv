@@ -27,6 +27,7 @@ import { computed } from "vue";
 interface Props {
   link?: Link;
 }
+
 const props = defineProps<Props>();
 
 const { fetchProject } = useProjectStore();

@@ -10,13 +10,15 @@
 <script lang="ts" setup>
 const { query } = useRoute();
 
-const { data: page } = await useApi<Page>(`/api/v1/pages/events`, {
+const { data: page, error } = await useApi<Page>(`/api/v1/pages/events`, {
   query: {
     preview: query.preview,
   },
 });
 
+if (error.value) throw createError({ ...error.value, fatal: true });
+
 useSeoMeta({
-  title: page.value?.title,
+  title: "Events",
 });
 </script>
