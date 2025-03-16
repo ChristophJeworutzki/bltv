@@ -1,5 +1,5 @@
 <template>
-  <main class="min-h-dvh">
+  <main class="min-h-svh">
     <project-feed />
   </main>
 </template>

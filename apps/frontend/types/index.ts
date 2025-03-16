@@ -111,9 +111,8 @@ declare global {
       city: string;
       country: string;
       email: string;
+      phone: string;
       instagram: string;
-      linkedin: string;
-      vimeo: string;
     };
     seo: {
       title: string;

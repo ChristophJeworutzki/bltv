@@ -1,10 +1,10 @@
 <?php
-function rest_get_index_page(WP_REST_Request $request) {
+function rest_get_page(WP_REST_Request $request) {
 
     $params = $request->get_params();
     $preview = isset($params['preview']) && $params['preview'] === 'true';
 
-    $post = get_post(get_option('page_on_front'));
+    $post = get_page_by_path($params['slug'], OBJECT, 'page');
 
     if (!$post) return new WP_REST_Response(null, 404);
 
@@ -24,8 +24,8 @@ function rest_get_index_page(WP_REST_Request $request) {
 }
 
 add_action('rest_api_init', function () {
-    register_rest_route('v1/pages', '/index', [
+    register_rest_route('v1/pages', '/(?P<slug>[a-zA-Z0-9-]+)', [
         'methods' => 'GET',
-        'callback' => 'rest_get_index_page'
+        'callback' => 'rest_get_page'
     ]);
 });

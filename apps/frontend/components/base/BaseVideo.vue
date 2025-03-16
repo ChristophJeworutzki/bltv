@@ -4,8 +4,6 @@
     class="base-video group w-full"
     :class="[fill ? 'absolute h-full' : 'relative']"
     :style="computedStyle"
-    @mouseenter="onMouseEnter"
-    @mouseleave="onMouseLeave"
   >
     <video
       ref="video"
@@ -53,7 +51,6 @@ type Props = {
   loop?: boolean;
   muted?: boolean;
   playsinline?: boolean;
-  autoplay?: "inview" | "hover";
   fit?: "cover" | "contain";
   fill?: boolean;
   imageProvider?: "mux" | "weserv";
@@ -66,7 +63,6 @@ const props = withDefaults(defineProps<Props>(), {
   ratio: "16:9",
   fit: "cover",
   fill: false,
-  autoplay: "inview",
   imageProvider: "mux",
 });
 
@@ -132,30 +128,11 @@ const onLoaded = () => {
   emit("loaded");
 };
 
-const toggleMute = () => {
-  video.value.muted = !video.value.muted;
-  state.value.muted = video.value.muted;
-};
-
 function onVisibilityChange(inview: boolean) {
   state.value.inview = inview;
-  if (props.autoplay === "inview") {
-    if (inview) {
-      play();
-    } else {
-      pause();
-    }
-  }
-}
-
-function onMouseEnter() {
-  if (props.autoplay === "hover") {
+  if (inview) {
     play();
-  }
-}
-
-function onMouseLeave() {
-  if (props.autoplay === "hover") {
+  } else {
     pause();
   }
 }

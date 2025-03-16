@@ -2,8 +2,9 @@
   <transition name="menu">
     <div
       v-show="menuOpen"
-      class="app-menu fixed left-0 top-0 z-40 h-dvh w-full overflow-auto bg-white text-black sm:hidden"
+      class="app-menu fixed left-0 top-0 z-50 h-dvh w-full overflow-auto bg-white text-black sm:hidden"
     >
+      <app-logo />
       <div class="absolute left-0 top-0 h-dvh w-full">
         <div class="flex h-full w-full grow flex-col justify-between pt-20">
           <nav class="flex grow flex-col items-center justify-center">
@@ -36,20 +37,6 @@
               target="_blank"
             >
               Instagram
-            </nuxt-link>
-            <nuxt-link
-              v-if="globalData?.profile?.linkedin"
-              :href="globalData.profile.linkedin"
-              target="_blank"
-            >
-              LinkedIn
-            </nuxt-link>
-            <nuxt-link
-              v-if="globalData?.profile?.vimeo"
-              :href="globalData.profile.vimeo"
-              target="_blank"
-            >
-              Vimeo
             </nuxt-link>
           </div>
         </div>

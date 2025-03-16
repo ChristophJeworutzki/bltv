@@ -1,5 +1,5 @@
 <template>
-  <div class="x-grid-item-box" :class="{ '-first': first }">
+  <div class="x-grid-item-box relative" :class="{ '-first': first }">
     <slot />
   </div>
 </template>

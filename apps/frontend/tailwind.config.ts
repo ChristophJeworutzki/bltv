@@ -51,7 +51,7 @@ export default {
       addComponents({
         ".type-display": {
           fontFamily: theme("fontFamily.serif"),
-          fontSize: "clamp(2rem, 4vw, 4rem)",
+          fontSize: "3rem",
           lineHeight: "1.1",
           letterSpacing: "-0.0125em",
           textTransform: "none",

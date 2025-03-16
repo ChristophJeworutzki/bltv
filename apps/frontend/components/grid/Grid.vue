@@ -7,7 +7,7 @@
 <style lang="postcss">
 .x-grid {
   --gc: 24;
-  --gg: 0.5rem;
+  --gg: 0rem;
   --y-offset: 0rem;
   --x-offset: 0.5rem;
 
@@ -21,6 +21,5 @@
   grid-auto-flow: row dense;
   gap: 0 var(--gg);
   padding: 0 var(--x-offset);
-  pointer-events: none;
 }
 </style>

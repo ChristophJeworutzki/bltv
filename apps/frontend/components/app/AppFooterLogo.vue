@@ -14,7 +14,7 @@
       <div
         class="absolute left-0 top-1/2 z-0 -translate-y-1/2 overflow-hidden bg-black"
       >
-        <laser-beam />
+        <webgl-laser-beam />
       </div>
     </div>
   </div>

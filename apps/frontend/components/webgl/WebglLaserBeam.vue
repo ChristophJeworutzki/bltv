@@ -27,11 +27,11 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  config: () => ({
+  config: (): Config => ({
     xScale: 2,
     yScale: 0.1,
-    speed: 0.05,
-    intensity: 0.175,
+    speed: 0.025,
+    intensity: 0.125,
     rotation: 0,
   }),
 });
@@ -114,7 +114,6 @@ const fragmentShader = `
   }
 `;
 
-// Stage class as composition functions
 const createStage = (canvas: HTMLCanvasElement) => {
   const renderParam = {
     clearColor: 0x000000,
@@ -270,7 +269,7 @@ const createMesh = (
   };
 };
 
-// Use VueUse's useRafFn for animation
+// Animation loop
 const { pause: stopAnimation, resume: startAnimation } = useRafFn(
   () => {
     if (stage.value && mesh.value) {
@@ -281,7 +280,7 @@ const { pause: stopAnimation, resume: startAnimation } = useRafFn(
   { immediate: false },
 );
 
-// Handle window resize with VueUse
+// Handle window resize
 const handleResize = useDebounceFn(() => {
   if (!canvasRef.value) return;
 
@@ -293,6 +292,7 @@ const handleResize = useDebounceFn(() => {
   canvasRef.value.height = windowHeight.value;
 }, 60);
 
+// Clean up
 const cleanUp = () => {
   stopAnimation();
   THREE = null;

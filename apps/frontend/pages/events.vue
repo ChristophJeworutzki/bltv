@@ -1,9 +1,8 @@
 <template>
   <main class="min-h-svh">
-    <page-hero
-      :headline="page?.fields?.hero?.headline!"
-      :media="page?.fields?.hero.media"
-    />
+    <page-hero :media="page?.fields?.hero.media">
+      <h1 class="type-headline" v-html="page?.fields?.hero.headline" />
+    </page-hero>
   </main>
 </template>
 

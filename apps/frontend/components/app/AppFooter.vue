@@ -20,13 +20,13 @@
       <div class="flex-1">
         <ul class="flex items-center gap-4 whitespace-nowrap">
           <li>
-            <nuxt-link to="/">Impressum</nuxt-link>
+            <nuxt-link to="/contact">Impressum</nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/">Privacy Policy</nuxt-link>
+            <nuxt-link to="/privacy-policy">Privacy Policy</nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/">Terms & Conditions</nuxt-link>
+            <nuxt-link to="/terms">Terms & Conditions</nuxt-link>
           </li>
         </ul>
       </div>
@@ -44,7 +44,7 @@
       </div>
       <div class="flex flex-1 flex-col items-end">
         <p>
-          © {{ currentYear }} {{ globalData.profile.company }}. All rights
+          © {{ currentYear }} {{ globalData?.profile?.company }}. All rights
           reserved.
         </p>
       </div>
