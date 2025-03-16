@@ -1,11 +1,9 @@
 <template>
   <div
+    class="x-grid-item"
     :class="[
-      'x-grid-item',
-      {
-        'sticky flex': sticky,
-        relative: !sticky,
-      },
+      props.sticky ? 'sticky' : 'relative',
+      props.inset ? 'inset' : undefined,
     ]"
     :style="style"
   >
@@ -31,6 +29,7 @@ const style = computed(() => {
     "--w": props.rect.w,
     "--h": props.rect.h,
     top: props.sticky ? "0" : undefined,
+    "z-index": props.sticky ? "-1" : undefined,
   };
 });
 </script>

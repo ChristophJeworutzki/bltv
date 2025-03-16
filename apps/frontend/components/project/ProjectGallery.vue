@@ -11,7 +11,7 @@
         ]"
       >
         <div v-if="isVideoWithControls(media)" class="relative h-dvh">
-          <base-player :video="media.video!" />
+          <base-player :video="media.video!" autoplay />
         </div>
         <div
           v-else

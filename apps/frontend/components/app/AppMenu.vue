@@ -10,7 +10,7 @@
             <ul class="flex w-full flex-col items-center gap-2 px-4">
               <li>
                 <nuxt-link
-                  to="/projects"
+                  to="/"
                   class="menu-item"
                   :class="{ active: route.path.includes('/projects') }"
                 >

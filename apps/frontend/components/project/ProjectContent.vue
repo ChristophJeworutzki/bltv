@@ -16,7 +16,7 @@
         <icon-x class="size-5" />
       </button>
     </div>
-    <div class="-mt-20">
+    <div class="-mt-16">
       <project-gallery :gallery="project.gallery!" />
       <project-credits :credits="project.credits!" />
     </div>

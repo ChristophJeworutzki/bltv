@@ -1,5 +1,5 @@
 <template>
-  <div class="project-feed relative z-20 select-none pb-72">
+  <div class="project-feed relative">
     <project-feed-section
       v-for="(project, index) in computedProjects"
       :key="index"

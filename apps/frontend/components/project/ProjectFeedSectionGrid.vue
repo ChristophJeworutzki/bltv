@@ -1,5 +1,5 @@
 <template>
-  <div class="project-feed-section-grid relative w-full">
+  <div class="project-feed-section-grid">
     <grid>
       <grid-item
         v-for="(media, index) in project?.preview"
@@ -9,12 +9,13 @@
         :inset="index !== 0"
       >
         <grid-item-box
-          class="h-full"
+          class="relative h-full"
           :style="getCssMediaAspectRatio(media)"
           :class="[index !== 0 ? 'h-full sm:h-auto' : 'py-16']"
           :first="index === 0"
         >
           <base-media :media="media" fill fit="contain" />
+          <project-link :project="project" class="absolute inset-0" />
         </grid-item-box>
       </grid-item>
       <grid-item
@@ -24,7 +25,7 @@
           w: 24,
           h: 1,
         }"
-        class="!pointer-events-none z-0"
+        class="!pointer-events-none"
       />
     </grid>
   </div>

@@ -29,11 +29,14 @@
         </li>
       </ul>
     </nav>
+    <nuxt-link to="/">
+      <app-logo />
+    </nuxt-link>
     <div
       class="absolute right-0 top-0 hidden p-2 lg:block"
       v-if="!route.fullPath.includes('/contact')"
     >
-      <app-contact />
+      <app-contact compact />
     </div>
   </header>
 </template>

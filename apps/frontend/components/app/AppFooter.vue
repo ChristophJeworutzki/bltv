@@ -1,11 +1,9 @@
 <template>
   <footer
-    class="mb-[env(safe-area-inset-bottom)] mt-32 flex w-full flex-col gap-4 p-2 lg:p-2"
+    class="mb-[env(safe-area-inset-bottom)] flex w-full flex-col gap-4 p-2 lg:p-2"
   >
     <div class="flex flex-col-reverse gap-4 lg:flex-col">
-      <div class="w-full text-white/10">
-        <logo class="h-auto w-full" />
-      </div>
+      <app-footer-logo />
       <div
         class="type-headline flex flex-col items-center justify-center gap-2 whitespace-nowrap leading-none lg:flex-row"
       >
@@ -45,15 +43,16 @@
         </a>
       </div>
       <div class="flex flex-1 flex-col items-end">
-        <p>© {{ currentYear }} BLTV GmbH. All rights reserved.</p>
+        <p>
+          © {{ currentYear }} {{ globalData.profile.company }}. All rights
+          reserved.
+        </p>
       </div>
     </div>
   </footer>
 </template>
 
 <script lang="ts" setup>
-import Logo from "~/assets/svg/logos/logo.svg";
-
 const { globalData } = storeToRefs(useDataStore());
 const currentYear = new Date().getFullYear();
 </script>

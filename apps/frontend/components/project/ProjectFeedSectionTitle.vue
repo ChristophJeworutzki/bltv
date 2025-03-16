@@ -1,17 +1,16 @@
 <template>
   <div
-    class="project-feed-title sticky inset-0 z-10 flex h-dvh w-full items-center justify-center"
+    class="project-feed-title pointer-events-none sticky inset-0 z-20 flex h-lvh w-full items-center justify-center"
   >
-    <a
-      :href="`/projects/${project.slug}`"
-      class="flex w-full max-w-2xl flex-col items-center gap-4 px-2 py-12 text-center"
-      @click.prevent="openProject"
+    <div
+      class="pointer-events-auto flex w-full max-w-2xl flex-col items-center gap-4 p-2 text-center"
     >
       <h2 class="type-headline">{{ project.title }}</h2>
       <div class="w-full border-b border-t py-1">
         {{ project.client }}
       </div>
-    </a>
+      <project-link :project="project" class="absolute inset-0" />
+    </div>
   </div>
 </template>
 
@@ -20,13 +19,5 @@ interface Props {
   project: Project;
 }
 
-const { project } = defineProps<Props>();
-
-const { fetchProject } = useProjectStore();
-const { isPending } = storeToRefs(useProjectStore());
-
-async function openProject() {
-  if (!project?.slug || isPending.value) return;
-  await fetchProject(project.slug);
-}
+defineProps<Props>();
 </script>
