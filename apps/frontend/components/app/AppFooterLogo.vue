@@ -11,12 +11,11 @@
       </defs>
     </svg>
     <div class="absolute inset-0" style="clip-path: url(#clip)">
-      <div
-        class="absolute left-0 top-1/2 z-0 -translate-y-1/2 overflow-hidden bg-black"
-      >
-        <webgl-laser-beam />
-      </div>
+      <base-video
+        src="https://stream.mux.com/zGcMquLLDSmLFpXMu7aQ1XiG7ELhPMbc402EHd027tcHc/high.mp4"
+        thumbnail-src="https://image.mux.com/zGcMquLLDSmLFpXMu7aQ1XiG7ELhPMbc402EHd027tcHc/thumbnail.jpg?time=0"
+        fill
+      />
     </div>
   </div>
 </template>
-d
