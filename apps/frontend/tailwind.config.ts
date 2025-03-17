@@ -51,24 +51,33 @@ export default {
       addComponents({
         ".type-display": {
           fontFamily: theme("fontFamily.serif"),
-          fontSize: "3rem",
+          fontSize: "2.5rem",
           lineHeight: "1.1",
           letterSpacing: "-0.0125em",
           textTransform: "none",
+          "@screen sm": {
+            fontSize: "3rem",
+          },
         },
         ".type-headline": {
-          fontFamily: theme("fontFamily.serif"),
-          fontSize: "2rem",
-          lineHeight: "1.1",
-          letterSpacing: "-0.0125em",
-          textTransform: "none",
-        },
-        ".type-headline-sm": {
           fontFamily: theme("fontFamily.serif"),
           fontSize: "1.5rem",
           lineHeight: "1.1",
           letterSpacing: "-0.0125em",
           textTransform: "none",
+          "@screen sm": {
+            fontSize: "2rem",
+          },
+        },
+        ".type-headline-sm": {
+          fontFamily: theme("fontFamily.serif"),
+          fontSize: "1.125rem",
+          lineHeight: "1.1",
+          letterSpacing: "-0.0125em",
+          textTransform: "none",
+          "@screen sm": {
+            fontSize: "1.5rem",
+          },
         },
       });
     }),
