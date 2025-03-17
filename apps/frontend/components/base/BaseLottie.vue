@@ -19,7 +19,7 @@ const defaultRendererSettings = {
   progressiveLoad: false,
 };
 
-interface BaseLottieProps {
+interface Props {
   src: Record<string, unknown> | string;
   loop?: boolean;
   autoplay?: boolean;
@@ -45,7 +45,7 @@ const {
   autoplay = false,
   rendererSettings,
   events = ["complete"],
-} = defineProps<BaseLottieProps>();
+} = defineProps<Props>();
 
 interface Emits {
   complete: [BMCompleteEvent];
@@ -78,20 +78,12 @@ const rendererSettingsMapped = computed(() => {
   return { ...defaultRendererSettings, ...rendererSettings };
 });
 
-// Implement module imports only on client-side
 let lottie: any = null;
-
-// Load lottie only on client-side
-async function loadLottie() {
-  if (isClient) {
-    lottie = (await import("lottie-web")).default;
-  }
-}
 
 function addEventListener() {
   events?.forEach((event) => {
-    animation.value?.addEventListener(event, (e) => {
-      // @ts-expect-error The event name is known
+    animation.value?.addEventListener(event, (e: unknown) => {
+      // @ts-expect-error
       emit(event, e);
     });
   });
@@ -106,9 +98,13 @@ function removeEventListener() {
 }
 
 async function init() {
-  if (!isClient || !el.value || !lottie) return;
+  if (!isClient || !el.value) return;
 
   try {
+    if (!lottie) {
+      lottie = (await import("lottie-web")).default;
+    }
+
     const path = typeof src === "string" ? src : undefined;
     const mappedSrc = typeof src === "object" ? src : undefined;
 
@@ -146,19 +142,10 @@ function pause() {
   state.playing = false;
 }
 
-// Expose methods for parent components
 defineExpose({
   play,
   pause,
   animation,
-});
-
-onMounted(async () => {
-  await loadLottie();
-  await init();
-  if (isVisible.value && autoplay) {
-    play();
-  }
 });
 
 // Properly handle src changes
@@ -177,13 +164,6 @@ watch(
   },
 );
 
-// Clean up resources before component unmounts
-onBeforeUnmount(() => {
-  if (!isClient) return;
-  removeEventListener();
-  animation.value?.destroy();
-});
-
 // Manage visibility and playback
 watch(isVisible, (visible) => {
   if (!isClient) return;
@@ -191,6 +171,20 @@ watch(isVisible, (visible) => {
     play();
   } else {
     pause();
+  }
+});
+
+// Clean up resources before component unmounts
+onBeforeUnmount(() => {
+  if (!isClient) return;
+  removeEventListener();
+  animation.value?.destroy();
+});
+
+onMounted(async () => {
+  await init();
+  if (isVisible.value && autoplay) {
+    play();
   }
 });
 </script>

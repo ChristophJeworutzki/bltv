@@ -7,21 +7,17 @@
   >
     <video
       ref="video"
-      :src="props.src"
+      :src="src"
       :loop="loop"
       :muted="muted"
       :preload="preload"
       :playsinline="playsinline"
-      @playing="onPlaying"
-      @pause="onPause"
+      @playing="state.playing = true"
+      @pause="state.playing = false"
       @load="onLoaded"
       draggable="false"
       class="w-full"
-      :class="[
-        fill ? 'absolute h-full' : '',
-        fit === 'cover' ? 'object-cover' : '',
-        fit === 'contain' ? 'object-contain' : '',
-      ]"
+      :class="classNames"
     />
     <transition name="fade">
       <magic-image
@@ -32,11 +28,7 @@
         :src="thumbnailSrc"
         draggable="false"
         class="absolute left-0 top-0 z-10 h-full w-full"
-        :class="[
-          fill ? 'absolute h-full' : '',
-          fit === 'cover' ? 'object-cover' : '',
-          fit === 'contain' ? 'object-contain' : '',
-        ]"
+        :class="classNames"
       />
     </transition>
   </div>
@@ -45,7 +37,7 @@
 <script lang="ts" setup>
 import { useIntersectionObserver, useIdle } from "@vueuse/core";
 
-type Props = {
+interface Props {
   src: string;
   thumbnailSrc?: string;
   ratio?: string | false;
@@ -56,7 +48,8 @@ type Props = {
   fill?: boolean;
   imageProvider?: "mux" | "weserv";
   preload?: "auto" | "metadata" | "none";
-};
+  autoplay?: boolean;
+}
 
 const props = withDefaults(defineProps<Props>(), {
   loop: true,
@@ -65,92 +58,82 @@ const props = withDefaults(defineProps<Props>(), {
   ratio: "16:9",
   fit: "cover",
   fill: false,
+  autoplay: true,
   imageProvider: "mux",
+  preload: "metadata",
 });
+
+const { src, muted, autoplay, fill, fit, ratio } = toRefs(props);
 
 const el = ref();
 const video = ref();
 const thumbnail = ref();
 
-const state = ref({
+const state = reactive({
   loaded: false,
   playing: false,
   inview: false,
-  muted: props.muted,
+  muted: muted.value,
 });
 
 const emit = defineEmits(["loaded"]);
 
 const { idle } = useIdle(5 * 60 * 1000);
 
-const computedRatio = computed(() => {
-  if (props.ratio) {
-    return props.ratio.split(":");
-  } else {
-    return undefined;
-  }
-});
+const classNames = computed(() => [
+  fill.value ? "absolute h-full" : "",
+  fit.value === "cover" ? "object-cover" : "",
+  fit.value === "contain" ? "object-contain" : "",
+]);
 
-const computedStyle = computed(() => {
-  return {
-    "aspect-ratio":
-      computedRatio.value && !props.fill
-        ? `${computedRatio.value[0]}/${computedRatio.value[1]}`
-        : undefined,
-  };
-});
+const computedStyle = computed(() => ({
+  "aspect-ratio":
+    ratio.value && !fill.value
+      ? `${ratio.value.split(":")[0]}/${ratio.value.split(":")[1]}`
+      : undefined,
+}));
 
 const play = () => {
+  if (!video.value) return;
+
   const playPromise = video.value.play();
-  if (playPromise !== null) {
-    playPromise.catch((e: Error) => {
+  if (playPromise !== undefined) {
+    playPromise.catch((e: DOMException) => {
       if (e.name === "NotAllowedError" && video.value) {
         video.value.muted = true;
-        state.value.muted = true;
-        video?.value.play();
+        state.muted = true;
+        video.value.play();
       }
     });
   }
 };
 
-const pause = () => {
-  video.value?.pause();
-};
-
-const onPlaying = () => {
-  state.value.playing = true;
-};
-
-const onPause = () => {
-  state.value.playing = false;
-};
+const pause = () => video.value?.pause();
 
 const onLoaded = () => {
-  state.value.loaded = true;
+  state.loaded = true;
   emit("loaded");
 };
 
-function onVisibilityChange(inview: boolean) {
-  state.value.inview = inview;
-  if (inview) {
-    play();
-  } else {
-    pause();
-  }
-}
-
 useIntersectionObserver(
-  toRaw(el),
+  el,
   ([{ isIntersecting }]) => {
-    onVisibilityChange(isIntersecting);
+    state.inview = isIntersecting;
+    if (isIntersecting) {
+      if (autoplay.value && !state.playing) {
+        play();
+      }
+    } else {
+      pause();
+    }
   },
   { threshold: 0.1 },
 );
 
-watch(idle, (idle) => {
-  if (idle && state.value.playing) {
+watch(idle, (isIdle) => {
+  if (isIdle && state.playing) {
     pause();
-  } else if (!idle && state.value.inview) {
+  } else if (!isIdle && state.inview) {
     play();
   }
 });

@@ -1,7 +1,7 @@
 <template>
   <div
     class="base-media relative overflow-hidden"
-    :style="`--ratio: ${computedCssRatio}`"
+    :style="`--ratio: ${getCssMediaAspectRatio(media)}`"
     :class="[fill ? 'h-full w-full' : 'aspect-[var(--ratio)]']"
   >
     <magic-image
@@ -18,8 +18,7 @@
       v-else-if="media.type === 'video' && media.video"
       :src="computedVideoSrc"
       :thumbnail-src="media.video.poster"
-      :autoplay="videoAutoplay"
-      :muted="videoMuted"
+      :autoplay="media.video.duration < 15"
       :fit="fit"
       fill
     />
@@ -33,26 +32,14 @@ interface Props {
   fit?: "contain" | "cover";
   ratio?: string;
   videoQuality?: "high" | "medium" | "low";
-  videoAutoplay?: "inview" | "hover";
-  videoMuted?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   fit: "cover",
   videoQuality: "high",
-  videoMuted: true,
 });
 
 const computedVideoSrc = computed(() => {
   return props.media?.video?.files?.[props.videoQuality]?.url || "";
-});
-
-const computedCssRatio = computed(() => {
-  if (props.ratio) return props.ratio.split(":").join("/");
-  if (props.media.type === "image" && props.media.image?.aspectRatio) {
-    return props.media.image.aspectRatio.split(":").join("/");
-  } else if (props.media.type === "video" && props.media.video?.aspectRatio) {
-    return props.media.video.aspectRatio.split(":").join("/");
-  }
 });
 </script>
