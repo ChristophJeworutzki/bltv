@@ -1,5 +1,6 @@
 import { ref, computed, watch, onMounted } from "vue";
 import { useScroll, defaultWindow } from "@vueuse/core";
+import { useNuxtApp } from "#app";
 
 export function useHeadroom(options = {}) {
   const defaults = {
@@ -9,20 +10,46 @@ export function useHeadroom(options = {}) {
   };
 
   const config = { ...defaults, ...options };
+  const nuxtApp = useNuxtApp();
+  const isClient = import.meta.client || nuxtApp.$isClient;
 
   const isEnabled = ref(true);
   const isPinned = ref(true);
   const lastScrollY = ref(0);
   const lastDirection = ref("none");
 
-  const { y, directions, arrivedState } = useScroll(config.scroller, {
-    throttle: 100,
-    behavior: "smooth",
-  });
+  const y = ref(0);
+  const directions = ref({ top: false, bottom: false });
+  const arrivedState = ref({ top: true, bottom: false });
 
-  const isTop = computed(() => arrivedState.top || y.value <= config.offset);
+  if (isClient) {
+    const scrollData = useScroll(config.scroller, {
+      throttle: 100,
+      behavior: "smooth",
+    });
+
+    y.value = scrollData.y.value;
+    directions.value = scrollData.directions;
+    arrivedState.value = scrollData.arrivedState;
+
+    watch(scrollData.y, (newY) => {
+      y.value = newY;
+    });
+
+    watch(scrollData.directions, (newDirections) => {
+      directions.value = newDirections;
+    });
+
+    watch(scrollData.arrivedState, (newArrivedState) => {
+      arrivedState.value = newArrivedState;
+    });
+  }
+
+  const isTop = computed(
+    () => arrivedState.value.top || y.value <= config.offset,
+  );
   const isNotTop = computed(() => !isTop.value);
-  const isBottom = computed(() => arrivedState.bottom);
+  const isBottom = computed(() => arrivedState.value.bottom);
   const isNotBottom = computed(() => !isBottom.value);
 
   const hasPassedTolerance = computed(() => {
@@ -38,10 +65,10 @@ export function useHeadroom(options = {}) {
     }
 
     if (hasPassedTolerance.value) {
-      if (directions.top && lastDirection.value !== "up") {
+      if (directions.value.top && lastDirection.value !== "up") {
         isPinned.value = true;
         lastDirection.value = "up";
-      } else if (directions.bottom && lastDirection.value !== "down") {
+      } else if (directions.value.bottom && lastDirection.value !== "down") {
         isPinned.value = false;
         lastDirection.value = "down";
       }
@@ -50,11 +77,13 @@ export function useHeadroom(options = {}) {
     }
   };
 
-  watch(y, () => {
-    if (isEnabled.value) {
-      updatePinState();
-    }
-  });
+  if (isClient) {
+    watch(y, () => {
+      if (isEnabled.value) {
+        updatePinState();
+      }
+    });
+  }
 
   const pin = () => {
     if (isEnabled.value) {
@@ -78,8 +107,10 @@ export function useHeadroom(options = {}) {
   };
 
   onMounted(() => {
-    lastScrollY.value = y.value;
-    updatePinState();
+    if (isClient) {
+      lastScrollY.value = y.value;
+      updatePinState();
+    }
   });
 
   return {

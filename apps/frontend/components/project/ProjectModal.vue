@@ -27,7 +27,7 @@
 <script lang="ts" setup>
 import {
   useScrollLock,
-  defaultDocument,
+  defaultWindow,
   useScroll,
   useWindowSize,
 } from "@vueuse/core";
@@ -35,7 +35,7 @@ import {
 const { isOpen, project } = storeToRefs(useProjectStore());
 
 const router = useRouter();
-const isLocked = useScrollLock(defaultDocument);
+const isLocked = useScrollLock(defaultWindow);
 
 const scrollRef = ref<HTMLElement | null>(null);
 const scrollOutProgress = ref(1);

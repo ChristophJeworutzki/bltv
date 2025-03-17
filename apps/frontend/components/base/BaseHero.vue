@@ -31,6 +31,7 @@ import {
   useIntersectionObserver,
   defaultWindow,
 } from "@vueuse/core";
+import { ref, shallowRef, onMounted } from "vue";
 
 interface Props {
   media?: Media;
@@ -38,26 +39,42 @@ interface Props {
 
 defineProps<Props>();
 
-const elRef = useTemplateRef("elRef");
+const elRef = ref(null);
 const progress = shallowRef(0);
 
-const { y } = useScroll(defaultWindow);
-const { height } = useElementBounding(elRef);
+const scrollY = shallowRef(0);
+const elementHeight = shallowRef(0);
 
-const { pause, resume } = useRafFn(
-  () => {
-    progress.value = clampValue(y.value / height.value, 0, 1);
-  },
-  {
-    immediate: false,
-  },
-);
+onMounted(() => {
+  const { y } = useScroll(defaultWindow);
+  scrollY.value = y.value;
 
-useIntersectionObserver(elRef, ([{ isIntersecting }]) => {
-  if (isIntersecting) {
-    resume();
-  } else {
-    pause();
-  }
+  watch(y, (newY) => {
+    scrollY.value = newY;
+  });
+
+  const { height } = useElementBounding(elRef);
+  elementHeight.value = height.value;
+
+  watch(height, (newHeight) => {
+    elementHeight.value = newHeight;
+  });
+
+  const { pause, resume } = useRafFn(
+    () => {
+      progress.value = clampValue(scrollY.value / elementHeight.value, 0, 1);
+    },
+    {
+      immediate: false,
+    },
+  );
+
+  useIntersectionObserver(elRef, ([{ isIntersecting }]) => {
+    if (isIntersecting) {
+      resume();
+    } else {
+      pause();
+    }
+  });
 });
 </script>
