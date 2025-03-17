@@ -1,6 +1,5 @@
 import { ref, computed, watch, onMounted } from "vue";
-import { useScroll, defaultWindow } from "@vueuse/core";
-import { useNuxtApp } from "#app";
+import { useScroll, defaultWindow, isClient } from "@vueuse/core";
 
 export function useHeadroom(options = {}) {
   const defaults = {
@@ -10,8 +9,6 @@ export function useHeadroom(options = {}) {
   };
 
   const config = { ...defaults, ...options };
-  const nuxtApp = useNuxtApp();
-  const isClient = import.meta.client || nuxtApp.$isClient;
 
   const isEnabled = ref(true);
   const isPinned = ref(true);

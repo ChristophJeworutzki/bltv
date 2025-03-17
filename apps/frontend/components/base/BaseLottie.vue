@@ -3,9 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useElementVisibility } from "@vueuse/core";
-import lottie from "lottie-web";
-
+import { useElementVisibility, isClient } from "@vueuse/core";
 import type {
   AnimationItem,
   BMCompleteEvent,
@@ -80,6 +78,16 @@ const rendererSettingsMapped = computed(() => {
   return { ...defaultRendererSettings, ...rendererSettings };
 });
 
+// Implement module imports only on client-side
+let lottie: any = null;
+
+// Load lottie only on client-side
+async function loadLottie() {
+  if (isClient) {
+    lottie = (await import("lottie-web")).default;
+  }
+}
+
 function addEventListener() {
   events?.forEach((event) => {
     animation.value?.addEventListener(event, (e) => {
@@ -90,29 +98,40 @@ function addEventListener() {
 }
 
 function removeEventListener() {
+  if (!animation.value) return;
+
   events.forEach((event) => {
     animation.value?.removeEventListener(event);
   });
 }
 
 async function init() {
-  const path = typeof src === "string" ? src : undefined;
-  const mappedSrc = typeof src === "object" ? src : undefined;
-  animation.value = await lottie.loadAnimation({
-    container: toRaw(el.value),
-    renderer: "svg",
-    loop: loop,
-    autoplay: false,
-    path: path,
-    animationData: mappedSrc,
-    rendererSettings: rendererSettingsMapped.value,
-  });
+  if (!isClient || !el.value || !lottie) return;
 
-  addEventListener();
+  try {
+    const path = typeof src === "string" ? src : undefined;
+    const mappedSrc = typeof src === "object" ? src : undefined;
+
+    animation.value = lottie.loadAnimation({
+      container: el.value,
+      renderer: "svg",
+      loop: loop,
+      autoplay: false,
+      path: path,
+      animationData: mappedSrc,
+      rendererSettings: rendererSettingsMapped.value,
+    });
+
+    addEventListener();
+  } catch (error) {
+    console.error("Failed to initialize Lottie animation:", error);
+  }
 }
 
 function play() {
-  animation.value?.play();
+  if (!animation.value) return;
+
+  animation.value.play();
   state.started = true;
   state.paused = false;
   state.playing = true;
@@ -120,31 +139,54 @@ function play() {
 }
 
 function pause() {
+  if (!animation.value) return;
+
+  animation.value.pause();
   state.paused = true;
   state.playing = false;
 }
 
-onMounted(async () => {
-  await init();
+// Expose methods for parent components
+defineExpose({
+  play,
+  pause,
+  animation,
 });
 
+onMounted(async () => {
+  await loadLottie();
+  await init();
+  if (isVisible.value && autoplay) {
+    play();
+  }
+});
+
+// Properly handle src changes
 watch(
   () => src,
   async () => {
+    if (!isClient) return;
+
+    removeEventListener();
     animation.value?.destroy();
     await init();
+
     if (isVisible.value && autoplay) {
       play();
     }
   },
 );
 
+// Clean up resources before component unmounts
 onBeforeUnmount(() => {
+  if (!isClient) return;
   removeEventListener();
   animation.value?.destroy();
 });
 
+// Manage visibility and playback
 watch(isVisible, (visible) => {
+  if (!isClient) return;
   if (visible && autoplay) {
     play();
   } else {
