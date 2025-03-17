@@ -10,6 +10,7 @@
       :src="props.src"
       :loop="loop"
       :muted="muted"
+      :preload="preload"
       :playsinline="playsinline"
       @playing="onPlaying"
       @pause="onPause"
@@ -54,6 +55,7 @@ type Props = {
   fit?: "cover" | "contain";
   fill?: boolean;
   imageProvider?: "mux" | "weserv";
+  preload?: "auto" | "metadata" | "none";
 };
 
 const props = withDefaults(defineProps<Props>(), {

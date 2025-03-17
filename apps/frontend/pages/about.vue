@@ -1,8 +1,8 @@
 <template>
   <main class="min-h-svh">
-    <page-hero :media="page?.fields?.hero.media">
+    <base-hero :media="page?.fields?.hero.media">
       <h1 class="type-headline" v-html="page?.fields?.hero.headline" />
-    </page-hero>
+    </base-hero>
     <section class="py-8">
       <div class="container">
         <div class="grid grid-cols-12">
@@ -29,7 +29,7 @@
           <div class="flex flex-col gap-2">
             <h2 class="type-headline">Our Services</h2>
             <div class="flex flex-col border-t">
-              <base-accordion>
+              <base-accordion open>
                 <template #summery>
                   <h3>Commercial Gaffer</h3>
                 </template>

@@ -1,13 +1,13 @@
 <template>
   <main class="min-h-svh">
-    <page-hero :media="page?.fields?.hero.media">
+    <base-hero :media="page?.fields?.hero.media">
       <app-contact />
-    </page-hero>
+    </base-hero>
     <section class="pb-32 pt-8">
       <div class="container">
         <div class="grid grid-cols-12 gap-y-12">
           <div
-            class="col-span-12 flex flex-col gap-6 sm:col-span-8 md:col-span-6"
+            class="col-span-12 flex flex-col gap-8 sm:col-span-8 md:col-span-6"
           >
             <p class="type-headline">
               {{ globalData?.profile?.company }}<br />
@@ -23,6 +23,18 @@
               <a :href="`tel:${globalData?.profile?.phone}`">
                 {{ globalData?.profile?.phone }}
               </a>
+            </p>
+            <p class="max-w-sm">
+              Wir sind Mitglied im VLLV Verband der Lichtdesigner und Licht- und
+              Medienoperatoren und wir sind vertreten in der
+              Interessengemeinschaft IGLBM
+            </p>
+            <p class="max-w-sm">
+              Registergericht: AG München <br />
+              Registernummer: HRB267446 <br />
+              Umsatzsteuer ID: DE345783002 <br />
+              Verantwortlich für den Inhalt: <br />
+              Lucas Gebauer, Julian Wagner
             </p>
           </div>
           <div

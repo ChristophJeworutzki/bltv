@@ -46,6 +46,7 @@ import IconMenu from "~/assets/svg/icons/menu.svg";
 import IconX from "~/assets/svg/icons/x.svg";
 
 const route = useRoute();
+
 const { menuOpen } = storeToRefs(useAppStore());
 
 function toggleMenu() {

@@ -25,7 +25,7 @@
                 <nuxt-link to="/events" class="menu-item">Events</nuxt-link>
               </li>
               <li>
-                <nuxt-link to="/events" class="menu-item">Contact</nuxt-link>
+                <nuxt-link to="/contact" class="menu-item">Contact</nuxt-link>
               </li>
             </ul>
           </nav>

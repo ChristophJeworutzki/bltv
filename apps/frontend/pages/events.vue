@@ -1,8 +1,8 @@
 <template>
   <main class="min-h-svh">
-    <page-hero :media="page?.fields?.hero.media">
+    <base-hero :media="page?.fields?.hero.media">
       <h1 class="type-headline" v-html="page?.fields?.hero.headline" />
-    </page-hero>
+    </base-hero>
   </main>
 </template>
 

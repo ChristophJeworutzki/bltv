@@ -1,5 +1,5 @@
 <template>
-  <section class="project-credits py-48">
+  <section v-if="credits?.length" class="project-credits py-48">
     <div class="container">
       <div class="flex flex-col items-center justify-center gap-4">
         <h2 class="type-headline">Credits</h2>
