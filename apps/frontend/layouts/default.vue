@@ -4,7 +4,7 @@
     <app-menu />
     <div class="relative">
       <slot />
-      <app-sticky-icon />
+      <!-- <app-sticky-icon /> -->
     </div>
     <app-footer />
     <project-modal />
