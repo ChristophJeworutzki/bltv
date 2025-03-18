@@ -1,7 +1,10 @@
 <template>
   <main class="min-h-svh">
     <base-hero :media="page?.fields?.hero.media">
-      <h1 class="type-headline" v-html="page?.fields?.hero.headline" />
+      <h1
+        class="type-headline [&>br]:hidden sm:[&>br]:block"
+        v-html="page?.fields?.hero.headline"
+      />
     </base-hero>
     <section class="py-8">
       <div class="container">

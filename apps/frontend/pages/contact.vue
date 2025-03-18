@@ -24,18 +24,6 @@
                 {{ globalData?.profile?.phone }}
               </a>
             </p>
-            <p class="max-w-sm">
-              Wir sind Mitglied im VLLV Verband der Lichtdesigner und Licht- und
-              Medienoperatoren und wir sind vertreten in der
-              Interessengemeinschaft IGLBM
-            </p>
-            <p class="max-w-sm">
-              Registergericht: AG München <br />
-              Registernummer: HRB267446 <br />
-              Umsatzsteuer ID: DE345783002 <br />
-              Verantwortlich für den Inhalt: <br />
-              Lucas Gebauer, Julian Wagner
-            </p>
           </div>
           <div
             v-if="page?.fields?.paragraphs"
