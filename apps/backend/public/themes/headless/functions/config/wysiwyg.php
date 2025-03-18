@@ -3,7 +3,7 @@
 /* Custom WYSIWYG Toolbar */
 function acf_custom_wysiwyg_toolbar($toolbars) {
   $toolbars['Basic'] = array();
-  $toolbars['Basic'][1] = array('bold', 'italic', 'link', 'unlink');
+  $toolbars['Basic'][1] = array('format_select', 'bold', 'italic', 'link', 'unlink');
   $toolbars['Link'] = array();
   $toolbars['Link'][1] = array('link', 'unlink');
   if (($key = array_search('code', $toolbars['Full'][2])) !== false) {
@@ -13,7 +13,7 @@ function acf_custom_wysiwyg_toolbar($toolbars) {
 }
 
 function acf_custom_wysiwyg_formats($settings) {
-  $settings['block_formats'] = 'Heading 3=h4; Heading 2=h3; Heading 1=h2; Paragraph=p;';
+  $settings['block_formats'] = 'Heading 1=h2; Paragraph=p;';
   $settings['wpautop'] = false;
   $settings['toolbar1'] = false;
   $settings['keep_styles'] = true;
@@ -24,7 +24,7 @@ function acf_custom_wysiwyg_formats($settings) {
 function custom_tinymce_config($in) {
   $in['paste_preprocess'] = "function(plugin, args){
     // Strip all HTML tags except those we have whitelisted
-    var whitelist = 'p,br,em,i,strong,b,a';
+    var whitelist = 'p,br,em,i,strong,b,a,h2';
     var stripped = jQuery('<div>' + args.content + '</div>');
     var els = stripped.find('*').not(whitelist);
     for (var i = els.length - 1; i >= 0; i--) {
