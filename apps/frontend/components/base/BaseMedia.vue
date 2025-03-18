@@ -18,7 +18,7 @@
       v-else-if="media.type === 'video' && media.video"
       :src="computedVideoSrc"
       :thumbnail-src="media.video.poster"
-      :autoplay="media.video.duration < 15"
+      :autoplay="media.video.duration < 20"
       :fit="fit"
       fill
     />

@@ -14,7 +14,12 @@
           :class="[index == 0 ? 'py-16' : '']"
           :first="index === 0"
         >
-          <base-media :media="layoutItem.media" fill fit="contain" />
+          <base-media
+            :media="layoutItem.media"
+            fill
+            fit="contain"
+            :video-quality="index === 0 ? 'hight' : 'low'"
+          />
           <project-link :project="project" class="absolute inset-0" />
         </grid-item-box>
       </grid-item>
