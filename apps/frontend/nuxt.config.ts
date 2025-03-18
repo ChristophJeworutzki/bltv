@@ -74,6 +74,9 @@ export default defineNuxtConfig({
       provider: "weserv",
       weserv: {
         baseURL: "https://wsrv.nl",
+        modifiers: {
+          output: "webp",
+        },
       },
     },
   },

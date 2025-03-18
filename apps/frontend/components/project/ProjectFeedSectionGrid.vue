@@ -18,7 +18,7 @@
             :media="layoutItem.media"
             fill
             fit="contain"
-            :video-quality="index === 0 ? 'hight' : 'low'"
+            :video-quality="index === 0 ? 'high' : 'low'"
           />
           <project-link :project="project" class="absolute inset-0" />
         </grid-item-box>
