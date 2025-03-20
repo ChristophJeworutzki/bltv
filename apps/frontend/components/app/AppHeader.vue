@@ -1,5 +1,5 @@
 <template>
-  <header class="fixed left-0 top-0 z-50 w-full">
+  <header class="app-header fixed left-0 top-0 z-50 w-full">
     <button
       class="absolute right-4 top-4 -ml-[14px] flex size-10 items-center justify-center rounded-full bg-white/10 backdrop-blur-lg md:hidden"
       @click="toggleMenu"
@@ -12,20 +12,24 @@
         <li>
           <nuxt-link
             to="/"
-            class="menu-item"
+            class="app-header-nav-item"
             :class="{ active: route.path.includes('/projects') }"
           >
             Projects
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/about" class="menu-item">About</nuxt-link>
+          <nuxt-link to="/about" class="app-header-nav-item"> About </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/events" class="menu-item">Events</nuxt-link>
+          <nuxt-link to="/events" class="app-header-nav-item">
+            Events
+          </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/contact" class="menu-item">Contact</nuxt-link>
+          <nuxt-link to="/contact" class="app-header-nav-item">
+            Contact
+          </nuxt-link>
         </li>
       </ul>
     </nav>
@@ -53,3 +57,12 @@ function toggleMenu() {
   menuOpen.value = !menuOpen.value;
 }
 </script>
+
+<style lang="postcss">
+.app-header-nav-item {
+  @apply type-headline-sm leading-none;
+  &.active {
+    @apply italic;
+  }
+}
+</style>

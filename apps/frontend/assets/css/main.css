@@ -1,9 +1,2 @@
 @import "animations";
 @import "prose";
-
-.menu-item {
-  @apply type-headline-sm leading-none;
-  &.active {
-    @apply italic;
-  }
-}

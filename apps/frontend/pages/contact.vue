@@ -7,23 +7,29 @@
       <div class="container">
         <div class="grid grid-cols-12 gap-y-12">
           <div
-            class="col-span-12 flex flex-col gap-8 sm:col-span-8 md:col-span-6"
+            class="col-span-12 flex h-full flex-col justify-between gap-8 sm:col-span-8 md:col-span-6"
           >
-            <p class="type-headline">
-              {{ globalData?.profile?.company }}<br />
-              {{ globalData?.profile?.address }}<br />
-              {{ globalData?.profile?.zip }} {{ globalData?.profile?.city }},
-              {{ globalData?.profile?.country }}
-            </p>
-            <p class="type-headline">
-              <a :href="`mailto:${globalData?.profile?.email}`">
-                {{ globalData?.profile?.email }}
-              </a>
-              <br />
-              <a :href="`tel:${globalData?.profile?.phone}`">
-                {{ globalData?.profile?.phone }}
-              </a>
-            </p>
+            <div class="flex flex-col gap-8">
+              <p class="type-headline">
+                {{ globalData?.profile?.company }}<br />
+                {{ globalData?.profile?.address }}<br />
+                {{ globalData?.profile?.zip }} {{ globalData?.profile?.city }},
+                {{ globalData?.profile?.country }}
+              </p>
+              <p class="type-headline">
+                <a :href="`mailto:${globalData?.profile?.email}`">
+                  {{ globalData?.profile?.email }}
+                </a>
+                <br />
+                <a :href="`tel:${globalData?.profile?.phone}`">
+                  {{ globalData?.profile?.phone }}
+                </a>
+              </p>
+            </div>
+            <div
+              class="prose max-w-md text-pretty"
+              v-html="page?.fields.info"
+            />
           </div>
           <div
             v-if="page?.fields?.paragraphs"

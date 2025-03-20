@@ -5,7 +5,7 @@
     <div class="flex flex-col-reverse gap-4 lg:flex-col">
       <app-footer-logo />
       <div
-        class="type-headline flex flex-col items-center justify-center gap-2 whitespace-nowrap leading-none lg:flex-row"
+        class="type-headline flex flex-col items-center justify-center whitespace-nowrap sm:gap-2 lg:flex-row"
       >
         <span>Es werde Licht.</span>
         <span>Que la lumière soit.</span>

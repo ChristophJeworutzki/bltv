@@ -1,12 +1,23 @@
 .prose {
+  h2,
   h3,
-  h4,
-  h5,
   p,
   ul,
   ol {
     &:not(:first-child) {
-      margin-top: 0.5rem;
+      margin-top: 1rem;
     }
+  }
+
+  h2 {
+    @apply type-headline;
+  }
+
+  h3 {
+    @apply type-headline-sm;
+  }
+
+  a {
+    @apply opacity-60 hover:opacity-100;
   }
 }

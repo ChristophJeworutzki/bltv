@@ -1,7 +1,7 @@
 <template>
   <main class="min-h-svh">
     <section class="py-32 sm:py-64">
-      <div class="container max-w-3xl">
+      <div class="container max-w-2xl">
         <div class="flex w-full flex-col gap-12">
           <header class="flex flex-col gap-2 text-center">
             <h1 class="type-display">Terms & Conditions</h1>

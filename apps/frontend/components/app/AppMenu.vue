@@ -12,20 +12,26 @@
               <li>
                 <nuxt-link
                   to="/"
-                  class="menu-item"
+                  class="app-menu-nav-item"
                   :class="{ active: route.path.includes('/projects') }"
                 >
                   Projects
                 </nuxt-link>
               </li>
               <li>
-                <nuxt-link to="/about" class="menu-item">About</nuxt-link>
+                <nuxt-link to="/about" class="app-menu-nav-item">
+                  About
+                </nuxt-link>
               </li>
               <li>
-                <nuxt-link to="/events" class="menu-item">Events</nuxt-link>
+                <nuxt-link to="/events" class="app-menu-nav-item">
+                  Events
+                </nuxt-link>
               </li>
               <li>
-                <nuxt-link to="/contact" class="menu-item">Contact</nuxt-link>
+                <nuxt-link to="/contact" class="app-menu-nav-item">
+                  Contact
+                </nuxt-link>
               </li>
             </ul>
           </nav>
@@ -59,6 +65,13 @@ watch(
 </script>
 
 <style lang="postcss">
+.app-menu-nav-item {
+  @apply type-display leading-none;
+  &.active {
+    @apply italic;
+  }
+}
+
 .menu-enter-active {
   animation: menu-in 0.5s cubic-bezier(0.65, 0, 0.35, 1);
 }
