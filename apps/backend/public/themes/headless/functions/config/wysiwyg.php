@@ -3,7 +3,7 @@
 /* Custom WYSIWYG Toolbar */
 function acf_custom_wysiwyg_toolbar($toolbars) {
   $toolbars['Basic'] = array();
-  $toolbars['Basic'][1] = array('format_select', 'bold', 'italic', 'link', 'unlink');
+  $toolbars['Basic'][1] = array('formatselect', 'link', 'unlink');
   $toolbars['Link'] = array();
   $toolbars['Link'][1] = array('link', 'unlink');
   if (($key = array_search('code', $toolbars['Full'][2])) !== false) {
@@ -13,7 +13,7 @@ function acf_custom_wysiwyg_toolbar($toolbars) {
 }
 
 function acf_custom_wysiwyg_formats($settings) {
-  $settings['block_formats'] = 'Heading 1=h2; Paragraph=p;';
+  $settings['block_formats'] = 'Heading=h2; Heading Small=h3; Paragraph=p;';
   $settings['wpautop'] = false;
   $settings['toolbar1'] = false;
   $settings['keep_styles'] = true;

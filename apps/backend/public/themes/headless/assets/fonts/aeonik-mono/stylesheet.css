@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "Aeonik Mono";
+  src:
+    url("AeonikMono-Regular.woff") format("woff"),
+    url("AeonikMono-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}

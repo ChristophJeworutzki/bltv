@@ -1,0 +1,27 @@
+@import "./../fonts/aeonik-mono/stylesheet.css";
+@import "./../fonts/denton-cond/stylesheet.css";
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h2 {
+  font-family: "Denton Text Cond", "sans-serif";
+  font-size: 1.75rem;
+  line-height: 1.1;
+  text-transform: none;
+}
+
+h3 {
+  font-family: "Denton Text Cond", "sans-serif";
+  font-size: 1.25rem;
+  line-height: 1.1;
+  text-transform: none;
+}
+
+p {
+  font-family: "Aeonik Mono", "monospace";
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
