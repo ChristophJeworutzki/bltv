@@ -25,7 +25,7 @@
             <div
               class="absolute left-[50%] top-[50%] h-dvh w-dvw -translate-x-1/2 -translate-y-1/2"
             >
-              <base-video src="/videos/beam.mp4" preload="auto" fill />
+              <base-video src="/videos/beam.mp4" fill />
             </div>
           </div>
         </div>

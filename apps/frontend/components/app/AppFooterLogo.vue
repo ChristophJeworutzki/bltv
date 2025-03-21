@@ -11,7 +11,7 @@
       </defs>
     </svg>
     <div class="absolute inset-0" style="clip-path: url(#clip)">
-      <base-video src="/videos/beam.mp4" preload="auto" fill />
+      <base-video src="/videos/beam.mp4" fill />
     </div>
   </div>
 </template>
