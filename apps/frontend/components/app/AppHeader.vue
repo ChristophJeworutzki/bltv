@@ -1,11 +1,10 @@
 <template>
   <header class="app-header fixed left-0 top-0 z-50 w-full">
     <button
-      class="absolute right-4 top-4 -ml-[14px] flex size-10 items-center justify-center rounded-full bg-white/10 backdrop-blur-lg md:hidden"
+      class="absolute right-3 top-2 flex size-10 items-center justify-center rounded-full bg-white/10 backdrop-blur-lg md:hidden"
       @click="toggleMenu"
     >
-      <icon-x v-if="menuOpen" class="size-5" />
-      <icon-menu v-else class="size-5" />
+      <icon-menu class="size-5" />
     </button>
     <nav class="absolute left-0 top-0 hidden p-2 md:block">
       <ul class="flex flex-col gap-0.5">
@@ -47,7 +46,6 @@
 
 <script lang="ts" setup>
 import IconMenu from "~/assets/svg/icons/menu.svg";
-import IconX from "~/assets/svg/icons/x.svg";
 
 const route = useRoute();
 

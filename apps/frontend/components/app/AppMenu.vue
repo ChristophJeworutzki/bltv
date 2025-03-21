@@ -4,6 +4,12 @@
       v-show="menuOpen"
       class="app-menu fixed left-0 top-0 z-50 h-dvh w-full overflow-auto bg-white text-black sm:hidden"
     >
+      <button
+        class="absolute right-3 top-2 z-10 flex size-10 items-center justify-center rounded-full bg-black/10 backdrop-blur-lg"
+        @click="closeMenu"
+      >
+        <icon-x class="size-5" />
+      </button>
       <app-logo />
       <div class="absolute left-0 top-0 h-dvh w-full">
         <div class="flex h-full w-full grow flex-col justify-between pt-20">
@@ -35,15 +41,27 @@
               </li>
             </ul>
           </nav>
-          <div class="flex w-full items-center justify-center gap-4 py-5">
-            <nuxt-link to="/contact">Contact</nuxt-link>
+          <div
+            class="flex w-full flex-col items-center justify-center gap-6 px-2 pb-5"
+          >
             <nuxt-link
               v-if="globalData?.profile?.instagram"
               :href="globalData.profile.instagram"
               target="_blank"
             >
-              Instagram
+              Follow us on instagram
             </nuxt-link>
+            <ul class="flex w-full flex-col items-center border-b text-center">
+              <li class="w-full border-t py-1">
+                <nuxt-link to="/contact">Impressum</nuxt-link>
+              </li>
+              <li class="w-full border-t py-1">
+                <nuxt-link to="/privacy-policy">Privacy Policy</nuxt-link>
+              </li>
+              <li class="w-full border-t py-1">
+                <nuxt-link to="/terms">Terms & Conditions</nuxt-link>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -52,6 +70,8 @@
 </template>
 
 <script lang="ts" setup>
+import IconX from "~/assets/svg/icons/x.svg";
+
 const route = useRoute();
 const { menuOpen } = storeToRefs(useAppStore());
 const { globalData } = storeToRefs(useDataStore());
@@ -62,6 +82,10 @@ watch(
     menuOpen.value = false;
   },
 );
+
+function closeMenu() {
+  menuOpen.value = false;
+}
 </script>
 
 <style lang="postcss">

@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="mb-[env(safe-area-inset-bottom)] flex w-full flex-col gap-4 p-2 lg:p-2"
+    class="mb-[env(safe-area-inset-bottom)] flex w-full flex-col gap-4 p-2"
   >
     <div class="flex flex-col-reverse gap-4 lg:flex-col">
       <app-footer-logo />
@@ -14,10 +14,11 @@
         <span>Laat daar Lig wees.</span>
       </div>
     </div>
+    <app-contact compact class="sm:hidden" />
     <div
-      class="flex w-full flex-col items-center border-b border-t py-2 text-center lg:flex-row lg:justify-between lg:text-left"
+      class="flex w-full flex-col items-center text-center sm:border-b sm:border-t sm:py-2 lg:flex-row lg:justify-between lg:text-left"
     >
-      <div class="flex-1">
+      <div class="order-2 flex-1 sm:order-none">
         <ul class="flex items-center gap-4 whitespace-nowrap">
           <li>
             <nuxt-link to="/contact">Impressum</nuxt-link>
@@ -32,7 +33,7 @@
       </div>
       <div
         v-if="globalData?.profile?.instagram"
-        class="flex flex-1 items-center justify-center"
+        class="order-1 flex flex-1 items-center justify-center pb-4 sm:order-none sm:pb-0"
       >
         <a
           :href="globalData.profile.instagram"
@@ -42,7 +43,7 @@
           Follow us on instagram
         </a>
       </div>
-      <div class="flex flex-1 flex-col items-end">
+      <div class="order-2 flex flex-1 flex-col items-end sm:order-none">
         <p>
           © {{ currentYear }} {{ globalData?.profile?.company }}. All rights
           reserved.

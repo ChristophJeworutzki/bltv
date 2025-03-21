@@ -61,8 +61,8 @@ export default {
         },
         ".type-headline": {
           fontFamily: theme("fontFamily.serif"),
-          fontSize: "1.5rem",
-          lineHeight: "1",
+          fontSize: "1.75rem",
+          lineHeight: "1.1",
           letterSpacing: "-0.0125em",
           textTransform: "none",
           "@screen sm": {
