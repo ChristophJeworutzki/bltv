@@ -1,7 +1,6 @@
 <template>
   <a
     :href="`/projects/${project.slug}`"
-    :title="project?.title"
     :class="{ 'cursor-wait': isPending }"
     @click.prevent="handleProjectClick"
   >

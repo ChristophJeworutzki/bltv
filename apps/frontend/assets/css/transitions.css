@@ -1,0 +1,7 @@
+.fade-enter-active {
+  animation: fade-in 0.4s ease;
+}
+
+.fade-leave-active {
+  animation: fade-out 0.4s ease;
+}

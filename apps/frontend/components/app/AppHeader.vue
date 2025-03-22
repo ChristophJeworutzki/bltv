@@ -18,7 +18,7 @@
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/about" class="app-header-nav-item"> About </nuxt-link>
+          <nuxt-link to="/about" class="app-header-nav-item">About</nuxt-link>
         </li>
         <li>
           <nuxt-link to="/events" class="app-header-nav-item">
@@ -32,7 +32,7 @@
         </li>
       </ul>
     </nav>
-    <nuxt-link to="/">
+    <nuxt-link to="/" @click.prevent="handleLogoClick">
       <app-logo />
     </nuxt-link>
     <div
@@ -48,11 +48,23 @@
 import IconMenu from "~/assets/svg/icons/menu.svg";
 
 const route = useRoute();
+const router = useRouter();
 
 const { menuOpen } = storeToRefs(useAppStore());
 
 function toggleMenu() {
   menuOpen.value = !menuOpen.value;
+}
+
+function handleLogoClick() {
+  if (route.path === "/") {
+    window?.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  } else {
+    router.push("/");
+  }
 }
 </script>
 
