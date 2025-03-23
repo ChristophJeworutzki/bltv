@@ -7,7 +7,7 @@
       <base-accordion
         v-for="(item, index) in items"
         :key="index"
-        :open="index === 0"
+        :open="item.open"
       >
         <template #summery>
           <h3>{{ item.title }}</h3>
@@ -24,6 +24,7 @@ interface Props {
   items: {
     title: string;
     content: string;
+    open: boolean;
   }[];
 }
 
