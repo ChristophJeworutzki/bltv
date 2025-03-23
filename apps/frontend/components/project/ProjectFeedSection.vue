@@ -1,5 +1,5 @@
 <template>
-  <section class="project-feed-section mt-[-50svh] sm:mt-[-25svh]">
+  <section class="project-feed-section relative">
     <project-feed-section-title :project="project" />
     <project-feed-section-grid :index="index" :project="project" />
   </section>

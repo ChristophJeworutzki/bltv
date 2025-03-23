@@ -19,18 +19,16 @@
       class="w-full"
       :class="classNames"
     />
-    <transition name="fade">
-      <magic-image
-        v-if="thumbnailSrc"
-        v-show="!state.playing"
-        ref="thumbnail"
-        :provider="imageProvider"
-        :src="thumbnailSrc"
-        draggable="false"
-        class="absolute left-0 top-0 z-10 h-full w-full"
-        :class="classNames"
-      />
-    </transition>
+    <magic-image
+      v-if="thumbnailSrc"
+      v-show="!state.playing"
+      ref="thumbnail"
+      :provider="imageProvider"
+      :src="thumbnailSrc"
+      draggable="false"
+      class="absolute left-0 top-0 z-10 h-full w-full"
+      :class="classNames"
+    />
   </div>
 </template>
 
