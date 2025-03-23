@@ -20,7 +20,8 @@ h3 {
   text-transform: none;
 }
 
-p {
+p,
+li {
   font-family: "Aeonik Mono", "monospace";
   font-size: 0.75rem;
   text-transform: uppercase;
