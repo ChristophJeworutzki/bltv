@@ -12,7 +12,7 @@
         <template #summery>
           <h3>{{ item.title }}</h3>
         </template>
-        <p v-html="item.content" />
+        <div class="prose" v-html="item.content" />
       </base-accordion>
     </div>
   </div>
