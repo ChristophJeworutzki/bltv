@@ -13,9 +13,8 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from "vue";
-import { useRouter } from "vue-router";
+import { useNuxtApp } from "#app";
 
-const router = useRouter();
 const animations = [
   { src: "/animations/logos/a.json", segment: [0, 50] },
   { src: "/animations/logos/b.json", segment: [0, 50] },
@@ -25,11 +24,13 @@ const animation = ref(animations[0]);
 const currentIndex = ref(0);
 
 onMounted(() => {
-  router.afterEach(() => {
+  const nuxtApp = useNuxtApp();
+  nuxtApp.hook("page:finish", () => {
     let newIndex;
     do {
       newIndex = Math.floor(Math.random() * animations.length);
     } while (newIndex === currentIndex.value && animations.length > 1);
+
     currentIndex.value = newIndex;
     animation.value = animations[currentIndex.value];
   });
