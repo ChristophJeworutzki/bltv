@@ -4,7 +4,11 @@
       {{ headline }}
     </h2>
     <div v-if="items.length" class="flex flex-col border-t">
-      <base-accordion v-for="(item, index) in items" :key="index">
+      <base-accordion
+        v-for="(item, index) in items"
+        :key="index"
+        :open="index === 0"
+      >
         <template #summery>
           <h3>{{ item.title }}</h3>
         </template>
