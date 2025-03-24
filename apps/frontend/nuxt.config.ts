@@ -59,7 +59,17 @@ export default defineNuxtConfig({
     "~/assets/css/main.css",
   ],
   plugins: ["~/plugins/video-player"],
-  modules: ["@pinia/nuxt", "@nuxtjs/tailwindcss", "@maas/magic-image"],
+  modules: [
+    "@pinia/nuxt",
+    "@nuxtjs/tailwindcss",
+    "@maas/magic-image",
+    "@nuxtjs/plausible",
+  ],
+  plausible: {
+    domain: process.env.PLAUSIBLE_DOMAIN,
+    apiHost: process.env.PLAUSIBLE_API_HOST,
+    ignoredHostnames: ["localhost"],
+  },
   tailwindcss: {
     viewer: false,
   },
